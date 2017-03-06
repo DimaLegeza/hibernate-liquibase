@@ -26,7 +26,8 @@ public class Person {
     @Column
     private String surname;
 
-    @OneToMany()
+    @OneToMany
+    @JoinTable(name = "PROPERTY", joinColumns = @JoinColumn(name = "ID"))
     private List<Property> properties;
 
 }
