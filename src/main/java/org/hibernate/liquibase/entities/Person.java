@@ -18,7 +18,6 @@ import java.util.List;
 public class Person {
 
     @Id
-    @GeneratedValue
     private long id;
 
     @Column

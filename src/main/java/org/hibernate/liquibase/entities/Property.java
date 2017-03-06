@@ -15,7 +15,6 @@ import javax.persistence.*;
 public class Property {
 
     @Id
-    @GeneratedValue
     private long id;
 
     @Column

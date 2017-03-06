@@ -22,9 +22,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>42.0.0</version>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>6.1.4.jre8-preview</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -125,9 +125,9 @@
                                 <version>3.6</version>
                             </dependency>
                             <dependency>
-                                <groupId>org.postgresql</groupId>
-                                <artifactId>postgresql</artifactId>
-                                <version>42.0.0</version>
+                                <groupId>com.microsoft.sqlserver</groupId>
+                                <artifactId>mssql-jdbc</artifactId>
+                                <version>6.1.4.jre8-preview</version>
                             </dependency>
                             <dependency>
                                 <groupId>javax.validation</groupId>
