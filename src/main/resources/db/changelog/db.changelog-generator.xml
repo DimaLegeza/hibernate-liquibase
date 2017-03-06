@@ -7,6 +7,6 @@
                    logicalFilePath="db/changelog/changelog-master.xml"
                    objectQuotingStrategy="QUOTE_ALL_OBJECTS">
 
-    <include file="changeSet/liquibase-diffChangeLog.xml" relativeToChangelogFile="true"/>
+    <includeAll path="changeSet" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
