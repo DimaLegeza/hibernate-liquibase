@@ -1,0 +1,46 @@
+info:
+  name: liquibase-hibernate
+
+server:
+  port: ${PORT:8080}
+
+spring:
+  jpa:
+    show-sql: true
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate.dialect: org.hibernate.dialect.SQLServer2012Dialect
+      org.hibernate.envers.store_data_at_delete: true
+      org.hibernate.envers.global_with_modified_flag: true
+      org.hibernate.envers.track_entities_changed_in_revision: true
+  datasource:
+    initialize: false
+    url: jdbc:sqlserver://${SQL_HOST:localhost}:1433;databaseName=${SQL_DATABASE:hibernate-liquibase}
+    username: ${SQL_DATABASE_USER:sa}
+    password: ${SQL_DATABASE_PASSWORD:FakePass54321&}
+    hikari:
+      minimumIdle: 20
+      maximumPoolSize: 30
+      idleTimeout: 10000
+      driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+  jackson:
+    serialization:
+      write-dates-with-zone-id: false
+    deserialization:
+      accept-float-as-int: false
+    date-format: yyyy-MM-dd'T'HH:mm:ss.SSSZ
+
+liquibase:
+  enabled: true
+  change-log: classpath:/db/changelog/master-changeset.xml
+  contexts: default
+
+---
+swagger:
+  title: Hibernate-Liquibase API

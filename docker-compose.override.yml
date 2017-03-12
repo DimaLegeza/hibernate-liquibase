@@ -1,0 +1,10 @@
+version: '2'
+services:
+  tools:
+    image: inni/mssql-tools
+    build: ./src/main/docker/mssql-tools/
+    depends_on:
+      - db
+    links:
+      - 'db:database'
+    command: /bin/wait-for-it.sh --host=database --port=1433 --timeout=30 --strict -- /bin/createdb.sh
