@@ -17,7 +17,7 @@ spring:
       org.hibernate.envers.track_entities_changed_in_revision: true
   datasource:
     initialize: false
-    url: jdbc:sqlserver://${SQL_HOST:localhost}:1433;databaseName=${SQL_DATABASE:hibernate-liquibase}
+    url: jdbc:sqlserver://${SQL_HOST:192.168.99.100}:1433;databaseName=${SQL_DATABASE:hibernate-liquibase}
     username: ${SQL_DATABASE_USER:sa}
     password: ${SQL_DATABASE_PASSWORD:FakePass54321&}
     hikari:
