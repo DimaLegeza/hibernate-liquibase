@@ -10,6 +10,7 @@ import javax.persistence.Id;
 
 import org.hibernate.envers.Audited;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -27,6 +28,7 @@ public class ElementVariable {
 
 	@Id
 	@GeneratedValue
+	@ApiModelProperty(hidden = true)
 	private Long id;
 
 	/**
@@ -44,20 +46,4 @@ public class ElementVariable {
 	 * mutable = false; means the value of the element is NOT editable
 	 */
 	private Boolean mutable;
-
-
-	/**
-	 * order of element variable in which it will be displayed on the wizard
-	 */
-	private Integer sortOrder;
-
-	/**
-	 * Number of decimals the element can have
-	 */
-	private Integer decimals;
-
-	/**
-	 * Unit of the element. e.g Kwh etc.
-	 */
-	private String unit;
 }
