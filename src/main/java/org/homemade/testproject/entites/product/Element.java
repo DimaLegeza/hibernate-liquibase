@@ -2,13 +2,15 @@ package org.homemade.testproject.entites.product;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.envers.Audited;
@@ -27,31 +29,27 @@ import lombok.NoArgsConstructor;
 @Entity
 @Audited
 @Data
-public class ElementVariable {
+public class Element  {
 
 	@Id
 	@GeneratedValue
-	@ApiModelProperty(hidden = true)
 	private Long id;
 
 	/**
 	 * name of the element
 	 */
+	@NotNull(message = "nameCanNotBeEmpty")
 	private String name;
 
 	/**
-	 * default value of the element; if the user does not provide custom value, default value would be stored
+	 * description of the element
 	 */
-	private BigDecimal defaultValue;
+	private String description;
 
-	/**
-	 * mutable = true; means the value of the element is editable
-	 * mutable = false; means the value of the element is NOT editable
-	 */
-	private Boolean mutable;
-
-	@ManyToOne
-	@JoinColumn(name = "element_variable_id")
+	@OneToMany
+	@JoinColumn(name = "element_variable_id", referencedColumnName = "id", table = "element_variable")
+	@OrderBy(value = "sort_order")
 	@NotNull(message = "elementCanNotBeEmpty")
-	private Element element;
+	@ApiModelProperty(hidden = true)
+	private Set<ElementVariable> elementVariables = new HashSet<>();
 }
