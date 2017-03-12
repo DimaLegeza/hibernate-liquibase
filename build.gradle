@@ -63,4 +63,14 @@ dependencies {
     compile("org.apache.commons:commons-collections4:${apacheCommonsCollectionsVersion}")
     compile("org.apache.commons:commons-io:${apacheCommonsIOVersion}")
     compile("org.liquibase:liquibase-core:${liquibaseVersion}") // if applicable
+
+    runtime "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
+    runtime "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion"
+    runtime 'com.microsoft.sqlserver:sqljdbc42:4.2'
+    runtime 'com.zaxxer:HikariCP'
+    runtime 'io.springfox:springfox-swagger-ui:2.6.1'
+    compile 'org.liquibase:liquibase-core:3.5.3'
+    runtime 'org.projectlombok:lombok:1.16.12'
+    runtime "org.springframework.boot:spring-boot-actuator:$spring_boot_version"
+    runtime "org.springframework.boot:spring-boot-starter-actuator:$spring_boot_version"
 }

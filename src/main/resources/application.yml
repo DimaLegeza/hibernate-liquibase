@@ -17,9 +17,9 @@ spring:
       org.hibernate.envers.track_entities_changed_in_revision: true
   datasource:
     initialize: false
-    url: jdbc:sqlserver://${SQL_HOST:192.168.99.100}:1433;databaseName=${SQL_DATABASE:hibernate-liquibase}
+    url: jdbc:sqlserver://${SQL_HOST:192.168.99.100}:1433;databaseName=${SQL_DATABASE:hibernateliquibase}
     username: ${SQL_DATABASE_USER:sa}
-    password: ${SQL_DATABASE_PASSWORD:FakePass54321&}
+    password: ${SQL_DATABASE_PASSWORD:FakePass51&}
     hikari:
       minimumIdle: 20
       maximumPoolSize: 30
@@ -38,9 +38,10 @@ spring:
 
 liquibase:
   enabled: true
-  change-log: classpath:/db/changelog/master-changeset.xml
+  change-log: classpath:/db/master-changeset.xml
   contexts: default
 
 ---
 swagger:
   title: Hibernate-Liquibase API
+  description: Hibernate-Liquibase Swagger auto-generated page
