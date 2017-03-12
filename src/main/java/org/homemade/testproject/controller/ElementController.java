@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "element-variable")
+@RequestMapping(value = "element")
 public class ElementController {
 
 	@Autowired
