@@ -9,6 +9,9 @@
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKeyName="element_variable_pk" primaryKey="true" nullable="false"/>
             </column>
+            <column name="element_id" type="BIGINT">
+                <constraints nullable="true"/>
+            </column>
             <column name="name" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
@@ -19,7 +22,7 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
-        <addForeignKeyConstraint baseColumnNames="element_variable_id"
+        <addForeignKeyConstraint baseColumnNames="element_id"
                                  baseTableName="element_variable"
                                  constraintName="element_variable_element_fk"
                                  onUpdate="RESTRICT"
