@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserIdGenerationService {
 
-	public UUID getUUID() {
-		return UUID.randomUUID();
+	public String getUUID() {
+		return String.format("User: %s", UUID.randomUUID());
 	}
 
 }
