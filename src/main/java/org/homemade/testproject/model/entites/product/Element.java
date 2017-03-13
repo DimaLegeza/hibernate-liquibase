@@ -12,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.envers.AuditMappedBy;
 import org.hibernate.envers.Audited;
 
 import lombok.Data;
@@ -34,7 +33,6 @@ public class Element {
 
 	private String description;
 
-	@AuditMappedBy(mappedBy = "element")
 	@OneToMany(cascade = { CascadeType.ALL }, mappedBy = "element")
 	private Set<ElementVariable> elementVariables = new HashSet<>();
 

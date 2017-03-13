@@ -14,6 +14,8 @@ import lombok.NoArgsConstructor;
 @Data
 public class Attr {
 
+	private Long id;
+
 	private String name;
 
 	private BigDecimal defaultValue;

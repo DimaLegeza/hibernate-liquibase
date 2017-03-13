@@ -47,4 +47,14 @@ public class ElementWithArgsService {
 		return variable;
 	}
 
+	public ElementVariable update(final Attr attr) {
+		final ElementVariable variable = new ElementVariable(attr.getId(),
+			attr.getName(),
+			attr.getDefaultValue(),
+			attr.getMutable(),
+			elementVariableRepository.findOne(attr.getId()).getElement());
+		elementVariableRepository.save(variable);
+		return variable;
+	}
+
 }
