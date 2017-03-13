@@ -10,8 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.envers.AuditJoinTable;
 import org.hibernate.envers.Audited;
-import org.hibernate.envers.NotAudited;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.EqualsAndHashCode;
@@ -41,9 +41,9 @@ public class ElementVariable {
 
 	private Boolean mutable;
 
-	@NotAudited
 	@ManyToOne
 	@JoinColumn(name = "element_id")
+	@AuditJoinTable(name = "element")
 	private Element element;
 
 	public ElementVariable(String name, BigDecimal defaultValue, Boolean mutable, Element element) {

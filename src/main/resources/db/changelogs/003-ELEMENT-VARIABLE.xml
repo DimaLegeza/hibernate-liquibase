@@ -41,7 +41,7 @@
             </column>
             <column name="revtype" type="TINYINT"/>
             <column name="element_id" type="BIGINT"/>
-            <column name="element_id_mod" type="BOOLEAN"/>
+            <column name="element_mod" type="BOOLEAN"/>
             <column name="name" type="VARCHAR(255)"/>
             <column name="name_mod" type="BOOLEAN"/>
             <column name="default_value" type="DECIMAL(18, 6)"/>
