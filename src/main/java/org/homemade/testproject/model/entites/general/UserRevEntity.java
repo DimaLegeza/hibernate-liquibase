@@ -1,5 +1,7 @@
 package org.homemade.testproject.model.entites.general;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -16,6 +18,10 @@ import lombok.Setter;
  */
 @Entity
 @RevisionEntity(UserRevisionListener.class)
+@AttributeOverrides({
+	@AttributeOverride(name = "id", column = @Column(name = "rev")),
+	@AttributeOverride(name = "timestamp", column = @Column(name = "revtstmp"))
+})
 @Table(name = "revinfo")
 @Getter
 @Setter

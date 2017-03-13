@@ -37,7 +37,7 @@
             </column>
             <column name="rev" type="BIGINT">
                 <constraints primaryKeyName="element_variable_aud_pk" primaryKey="true" nullable="false"
-                             foreignKeyName="element_variable_aud_revinfo_fk" referencedTableName="revinfo" referencedColumnNames="id"/>
+                             foreignKeyName="element_variable_aud_revinfo_fk" referencedTableName="revinfo" referencedColumnNames="rev"/>
             </column>
             <column name="revtype" type="TINYINT"/>
             <column name="element_id" type="BIGINT"/>
