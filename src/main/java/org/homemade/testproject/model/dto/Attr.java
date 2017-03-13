@@ -20,4 +20,6 @@ public class Attr {
 
 	private Boolean mutable;
 
+	private Long elementId;
+
 }

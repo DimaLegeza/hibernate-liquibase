@@ -25,16 +25,26 @@ public class ElementWithArgsService {
 		final Element elem = new Element(elementWithAttrs.getName(),
 			elementWithAttrs.getDescription());
 		elementRepository.save(elem);
-
-		for (final Attr attr: elementWithAttrs.getAttrs()) {
-			final ElementVariable variable = new ElementVariable(attr.getName(),
-				attr.getDefaultValue(),
-				attr.getMutable(),
-				elem);
-			elementVariableRepository.save(variable);
-			elem.getElementVariables().add(variable);
+		if (elementWithAttrs.getAttrs() != null) {
+			for (final Attr attr : elementWithAttrs.getAttrs()) {
+				final ElementVariable variable = new ElementVariable(attr.getName(),
+					attr.getDefaultValue(),
+					attr.getMutable(),
+					elem);
+				elementVariableRepository.save(variable);
+				elem.getElementVariables().add(variable);
+			}
 		}
 		return elem;
+	}
+
+	public ElementVariable persist(final Attr attr) {
+		final ElementVariable variable = new ElementVariable(attr.getName(),
+			attr.getDefaultValue(),
+			attr.getMutable(),
+			elementRepository.findOne(attr.getElementId()));
+		elementVariableRepository.save(variable);
+		return variable;
 	}
 
 }
