@@ -1,6 +1,7 @@
 package org.homemade.testproject.controller;
 
 import org.homemade.testproject.model.dto.ElementWithAttrs;
+import org.homemade.testproject.model.dto.PureElement;
 import org.homemade.testproject.model.entites.product.Element;
 import org.homemade.testproject.repository.ElementRepository;
 import org.homemade.testproject.service.ElementWithArgsService;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,5 +33,10 @@ public class ElementController {
 	@PostMapping
 	public ResponseEntity<Element> save(@RequestBody final ElementWithAttrs variable) {
 		return ResponseEntity.ok(elementWithArgsService.persist(variable));
+	}
+
+	@PutMapping
+	public ResponseEntity<Element> update(@RequestBody final PureElement variable) {
+		return ResponseEntity.ok(elementWithArgsService.update(variable));
 	}
 }

@@ -4,13 +4,16 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Version;
 
 import org.hibernate.envers.Audited;
+import org.hibernate.envers.NotAudited;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -46,7 +49,20 @@ public class ElementVariable {
 	@JoinColumn(name = "element_id")
 	private Element element;
 
+	@Version
+	@NotAudited
+	@Column(name = "lock_version", columnDefinition = "integer DEFAULT 0", nullable = false)
+	private long version = 0;
+
 	public ElementVariable(String name, BigDecimal defaultValue, Boolean mutable, Element element) {
+		this.name = name;
+		this.defaultValue = defaultValue;
+		this.mutable = mutable;
+		this.element = element;
+	}
+
+	public ElementVariable(long id, String name, BigDecimal defaultValue, Boolean mutable, Element element) {
+		this.id = id;
 		this.name = name;
 		this.defaultValue = defaultValue;
 		this.mutable = mutable;

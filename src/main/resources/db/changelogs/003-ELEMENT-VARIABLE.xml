@@ -23,6 +23,9 @@
             </column>
             <column name="conc" computed="true" valueComputed="upper([name])" type="varchar(255)">
             </column>
+            <column name="lock_version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
         <addForeignKeyConstraint baseColumnNames="element_id"
                                  baseTableName="element_variable"

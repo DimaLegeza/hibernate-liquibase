@@ -1,6 +1,7 @@
 package org.homemade.testproject.service;
 
 import org.homemade.testproject.model.dto.Attr;
+import org.homemade.testproject.model.dto.PureElement;
 import org.homemade.testproject.model.entites.product.Element;
 import org.homemade.testproject.model.entites.product.ElementVariable;
 import org.homemade.testproject.repository.ElementRepository;
@@ -35,6 +36,12 @@ public class ElementWithArgsService {
 				elem.getElementVariables().add(variable);
 			}
 		}
+		return elem;
+	}
+
+	public Element update(final PureElement element) {
+		final Element elem = new Element(element.getId(), element.getName(), element.getDescription());
+		elementRepository.save(elem);
 		return elem;
 	}
 
