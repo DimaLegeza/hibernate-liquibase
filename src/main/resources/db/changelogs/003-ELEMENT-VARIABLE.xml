@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd"
                    logicalFilePath="db/changelog/changelogs/003-DDL-ELEMENT-VARIABLE.xml"
                    objectQuotingStrategy="QUOTE_ALL_OBJECTS">
 
@@ -21,6 +21,8 @@
             <column name="mutable" type="BIT">
                 <constraints nullable="false"/>
             </column>
+            <column name="conc" computed="true" valueComputed="upper([name])" type="varchar(255)">
+            </column>
         </createTable>
         <addForeignKeyConstraint baseColumnNames="element_id"
                                  baseTableName="element_variable"
@@ -30,7 +32,19 @@
                                  referencedTableName="element"/>
     </changeSet>
 
-    <changeSet id="2" author="dmytro.legeza">
+    <changeSet id="2" author="dmytro.legeza" dbms="mssql">
+        <sql>
+            Alter table element_variable
+            Add bla as
+            case
+            when [name] is NULL
+            then 'DEFAULT'
+            else [name]
+            end
+        </sql>
+    </changeSet>
+
+    <changeSet id="3" author="dmytro.legeza">
         <createTable tableName="element_variable_aud">
             <column name="id" type="BIGINT">
                 <constraints primaryKeyName="element_variable_aud_pk" primaryKey="true" nullable="false"/>
